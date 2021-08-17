@@ -1,5 +1,5 @@
 const path = require("path");
-const { VueLoaderPlugin } = require("vue-loader/dist/index");
+const { VueLoaderPlugin } = require("vue-loader");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
@@ -56,11 +56,10 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({
-      template: "./src/index.html",
-      filename: "index.html",
-      title: "Vue3 + TS -> Web App",
-    }),
     new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "index.html"),
+      filename: "index.html",
+    }),
   ],
 };

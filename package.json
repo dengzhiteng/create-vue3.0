@@ -6,8 +6,8 @@
   "author": "dengzhiteng <dengzhiteng@jwx.com.cn>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack --config ./build/webpack.dev",
-    "build": "webpack --config ./build/webpack.pro"
+    "dev": "webpack serve --open --config ./webpack.dev.js",
+    "build": "webpack --config ./webpack.pro.js"
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.2.3",
@@ -26,6 +26,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "vue": "^3.2.3"
+    "vue": "^3.2.3",
+    "vue-router": "^4.0.11"
   }
 }
