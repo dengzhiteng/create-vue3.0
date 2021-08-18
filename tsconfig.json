@@ -1,17 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "esnext",
     "module": "esnext",
-    "moduleResolution": "node",
-    "isolatedModules": true,
+    // 这样就可以对 `this` 上的数据属性进行更严格的推断
     "strict": true,
-    "noUnusedLocals": true,
-    "sourceMap": true,
-    "noUnusedParameters": true,
-    "experimentalDecorators": true,
+    "jsx": "preserve",
     "allowJs": true,
-    "lib": ["DOM", "ESNext"]
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+    "moduleResolution": "node"
+  }
 }

@@ -26,8 +26,8 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.less$/,
-        use: ["style-loader", "css-loader", "less-loader"],
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.(jpg|png|jpeg|gif|bmp)$/,
@@ -59,22 +59,30 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.tsx?$/,
+        loader: "ts-loader",
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        },
+        exclude: /node_modules/,
+      },
       { test: /\.vue$/, loader: "vue-loader" },
       // {
       //   test: /\.js$/,
       //   exclude: /node_modules/, // 不编译node_modules文件
       //   loader: "babel-loader",
       // },
-      {
-        test: /\.tsx?$/,
-        use: [
-          // "babel-loader",
-          {
-            loader: "ts-loader",
-            options: { appendTsxSuffixTo: [/\.vue$/] },
-          },
-        ],
-      },
+      // {
+      //   test: /\.tsx?$/,
+      //   use: [
+      //     "babel-loader",
+      //     {
+      //       loader: "ts-loader",
+      //       options: { appendTsxSuffixTo: [/\.vue$/] },
+      //     },
+      //   ],
+      // },
     ],
   },
   plugins: [

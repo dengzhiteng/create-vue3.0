@@ -1,81 +1,36 @@
 <template>
-  <div class="title">{{ title }}</div>
-  <div class="opte" @click="doubleClick">第二个根节点</div>
-  <div class="opte" @click="resetClick">第三个根节点</div>
-  <div class="title">{{ name }}</div>
-  <div class="opte" @click="changeName">巴啦啦小魔仙</div>
-  <div class="title">{{ mergeData }}</div>
+  <div id="home">
+    <p>{{ isDone }}</p>
+    <p>{{ num }}</p>
+    <p>{{ age }}</p>
+    <input type="text" v-model="username" />
+  </div>
 </template>
 <script lang="ts">
-import {
-  watch,
-  reactive,
-  toRefs,
-  onMounted,
-  computed,
-  defineComponent,
-} from "vue";
+import { defineComponent, nextTick, ref } from "vue";
 export default defineComponent({
   name: "App",
   setup() {
-    const state = reactive({
-      title: "现在开始测试 vue3.0 打包",
-    });
-    onMounted(() => {
-      setTimeout(() => {
-        state.title = "现在开始测试 vue3.0 数据动态渲染";
-      }, 2000);
-    });
-    watch(
-      () => state.title,
-      (val, oldVal) => {
-        console.log(val, oldVal);
-      } // 第一次创建不监听
-    );
-    const doubleClick = () => {
-      state.title = "我点击了开始测试 vue3.0 数据动态更新，怎么样不错吧";
-    };
-    const resetClick = () => {
-      state.title = "我马上把他变回来";
-      setTimeout(() => {
-        state.title = "现在开始测试 vue3.0 打包";
-      }, 1000);
-    };
-    const data = reactive({
-      name: "菜鸡小王子",
-    });
-    watch(
-      () => data.name,
-      (val, oldVal) => {
-        console.log(val, oldVal);
-      }
-    );
-    const changeName = () => {
-      data.name = "伏虎小王子";
-    };
-    const mergeData = computed(() => state.title + data.name);
-
     let isDone: boolean = false;
-    console.log(isDone);
+    let num: number = 1;
+    let age: number = 37;
+    let username = ref("是的");
 
+    // 暴露到template
     return {
-      ...toRefs(state),
-      ...toRefs(data),
-      doubleClick,
-      resetClick,
-      changeName,
-      mergeData,
+      isDone,
+      num,
+      age,
+      username,
     };
   },
 });
 </script>
 
-<style>
-.title {
-  font-size: 20px;
-  color: black;
-}
-.opte {
-  cursor: pointer;
+<style lang="scss">
+#home {
+  p {
+    color: red;
+  }
 }
 </style>
