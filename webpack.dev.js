@@ -13,5 +13,13 @@ module.exports = merge(base, {
     hotOnly: true,
     compress: false, // 对打包进行压缩，默认为false，记录了以后可能会用到
     publicPath: "/",
+    proxy: {
+      "/": {
+        changeOrgin: true,
+      },
+    },
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
   },
 });
