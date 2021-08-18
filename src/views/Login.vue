@@ -1,27 +1,22 @@
 <template>
   <div id="login">
+    <p>1</p>
+    <a-button type="primary"> Primary </a-button>
     <input type="text" v-model="username" />
   </div>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import { byPhoneLogin, getUserdetail } from "../api/common";
 
 export default defineComponent({
   name: "App",
   async setup() {
-    let phone = "18682151435";
-    let password = "dzt201710";
-    await byPhoneLogin(phone, password).then((res) => {
-      sessionStorage.setItem("token", res.token);
-      sessionStorage.setItem("acount", JSON.stringify(res.account));
-    });
-
-    let account = JSON.parse(sessionStorage.getItem("acount"));
-    await getUserdetail(account.id).then((res) => {
-      console.log(res);
-    });
-    return {};
+    // const phone: string = "18682151435";
+    // const password: string = "dzt201710";
+    // const info: object = await byPhoneLogin(phone, password);
+    // const id: string = info.account.id;
+    // const detail: object = await getUserdetail(id);
   },
 });
 </script>
