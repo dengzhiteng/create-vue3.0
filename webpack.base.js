@@ -5,15 +5,22 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   entry: {
-    main: "./src/index.js",
+    main: path.resolve(__dirname, "./src/index.ts"),
   },
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "../", "./dist"),
   },
+  resolve: {
+    extensions: [".js", ".vue", ".ts", "json"],
+    modules: ["src", "node_modules"],
+    alias: {
+      "/@/": path.resolve(__dirname, "src"),
+      "/#": path.resolve(__dirname, "src/assets"),
+    },
+  },
   module: {
     rules: [
-      { test: /\.vue$/, loader: "vue-loader" },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
@@ -52,14 +59,31 @@ module.exports = {
           },
         },
       },
+      { test: /\.vue$/, loader: "vue-loader" },
+      // {
+      //   test: /\.js$/,
+      //   exclude: /node_modules/, // 不编译node_modules文件
+      //   loader: "babel-loader",
+      // },
+      {
+        test: /\.tsx?$/,
+        use: [
+          // "babel-loader",
+          {
+            loader: "ts-loader",
+            options: { appendTsxSuffixTo: [/\.vue$/] },
+          },
+        ],
+      },
     ],
   },
   plugins: [
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "index.html"),
+      template: path.join(__dirname, "./index.html"),
       filename: "index.html",
+      title: "简单版 Vue3 开发环境",
     }),
   ],
 };

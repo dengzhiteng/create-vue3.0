@@ -11,5 +11,7 @@ module.exports = merge(base, {
     port: 8888, // 第三部分会使用 portfinder 自动获取可用端口号
     hot: true,
     hotOnly: true,
+    compress: false, // 对打包进行压缩，默认为false，记录了以后可能会用到
+    publicPath: "/",
   },
 });
