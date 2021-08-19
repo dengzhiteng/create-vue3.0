@@ -15,8 +15,8 @@ module.exports = {
     extensions: [".js", ".vue", ".ts", "json"],
     modules: ["src", "node_modules"],
     alias: {
-      "/@/": path.resolve(__dirname, "src"),
-      "/#": path.resolve(__dirname, "src/assets"),
+      "@": path.resolve(__dirname, "src"),
+      "#": path.resolve(__dirname, "src/assets"),
     },
   },
   module: {
@@ -68,21 +68,6 @@ module.exports = {
         exclude: /node_modules/,
       },
       { test: /\.vue$/, loader: "vue-loader" },
-      // {
-      //   test: /\.js$/,
-      //   exclude: /node_modules/, // 不编译node_modules文件
-      //   loader: "babel-loader",
-      // },
-      // {
-      //   test: /\.tsx?$/,
-      //   use: [
-      //     "babel-loader",
-      //     {
-      //       loader: "ts-loader",
-      //       options: { appendTsxSuffixTo: [/\.vue$/] },
-      //     },
-      //   ],
-      // },
     ],
   },
   plugins: [

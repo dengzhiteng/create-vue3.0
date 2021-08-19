@@ -6,7 +6,7 @@
   "author": "dengzhiteng <dengzhiteng@jwx.com.cn>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack serve --open --config ./webpack.dev.js",
+    "dev": "webpack serve --config ./webpack.dev.js",
     "build": "webpack --config ./webpack.pro.js"
   },
   "devDependencies": {
